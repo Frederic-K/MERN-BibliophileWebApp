@@ -1,0 +1,26 @@
+export default {
+  verifyEmailPage: {
+    title: "Validation de l'email",
+    checkEmail: "Veuillez vérifier votre email pour le lien de validation.",
+    spamFolder: "Si vous ne l'avez pas reçu, assurez-vous de vérifier votre dossier spam.",
+    verifiedSuccess: "Email vérifié avec succès !",
+    signInPrompt: "Vous pouvez maintenant vous connecter avec votre email et mot de passe.",
+    signIn: "se connecter",
+    verificationFailed: "La vérification de l'email a échoué...",
+    unknownError: "Une erreur inconnue s'est produite.",
+    retrySignUp: "Vous pouvez réessayer de vous inscrire dans 1 heure.",
+    signUp: "s'inscrire",
+  },
+  verifyNewEmailPage: {
+    title: "Vérification du nouvel email",
+    verifying: "Vérification de votre nouvel email en cours...",
+    verifiedSuccess: "Nouvel email vérifié avec succès !",
+    updateComplete: "Votre email a été mis à jour.",
+    alreadyVerified: "Votre email est déjà vérifié. Aucune autre action est nécessaire.",
+    goToProfile: "Aller au profil",
+    verificationFailed: "La vérification du nouvel email a échoué.",
+    unknownError: "Une erreur inconnue s'est produite.",
+    tryAgain: "Veuillez essayer de mettre à jour votre email à nouveau.",
+    backToProfile: "Retour au profil",
+  },
+}

@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: all;
+}
+
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+
+@theme {
+  --font-exo2: "Exo 2", sans-serif;
+  --font-geist-sans: "Geist Sans", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
+}
+
+/* An opinionated set of base styles for Tailwind projects. When you import tailwindcss into your project, Preflight is automatically injected into the base layer */
+
+/* @layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+} */
+
+/* Custom colors */
+.unselected-star {
+  @apply bg-orange-500; /* Tailwind class for light gray background */
+}
+
+/* Custom fonts */
+@font-face {
+  font-family: "Geist Sans";
+  src: url("/fonts/GeistVF.woff") format("woff");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/GeistMonoVF.woff") format("woff");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Exo 2";
+  src: url("/fonts/Exo2-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* Root variables */
+/* :root {
+  --font-geist-sans: "Geist Sans", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
+  --font-exo2: "Exo 2", sans-serif;
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+} */
+
+/* @plugin "daisyui" {
+  themes: all;
+} */
