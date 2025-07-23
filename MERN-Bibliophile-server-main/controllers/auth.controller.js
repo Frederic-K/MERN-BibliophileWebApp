@@ -308,35 +308,6 @@ export const resetPassword = async (req, res, next) => {
   res.status(200).json({ message: "Password reset successfully" })
 }
 
-// // Update password
-// export const updatePassword = async (req, res, next) => {
-//   const { currentPassword, newPassword } = req.body
-//   const userId = req.user._id
-
-//   const user = await User.findById(userId)
-//   if (!user) {
-//     return next(createError("User not found", 404))
-//   }
-
-//   const isMatch = await bcrypt.compare(currentPassword, user.password)
-//   if (!isMatch) {
-//     logger.warn(`Failed password update attempt for user: ${user._id}`)
-//     return next(createError("Current password is incorrect", 400))
-//   }
-
-//   user.password = await bcrypt.hash(newPassword, 10)
-
-//   await user.save()
-
-//   // Send notification email
-//   await sendPasswordChangeNotification(user.email, next)
-
-//   logger.info(`Password updated successfully for user: ${user._id}`)
-//   res
-//     .status(200)
-//     .json({ message: "Password updated successfully. Please log in again with your new password." })
-// }
-
 // Update password
 export const updatePassword = async (req, res, next) => {
   const { currentPassword, newPassword, confirmNewPassword } = req.body
@@ -367,14 +338,16 @@ export const updatePassword = async (req, res, next) => {
     return next(createError("User not found", 404))
   }
 
+  // Check if the new password is different from the current password
   const isMatch = await bcrypt.compare(currentPassword, user.password)
   if (!isMatch) {
     logger.warn(`Failed password update attempt for user: ${user._id}`)
     return next(createError("Current password is incorrect", 400))
   }
 
-  // Check if the new password is different from the current password
-  if (currentPassword === newPassword) {
+  // Compare new password against stored hashed password
+  const isSamePassword = await bcrypt.compare(newPassword, user.password)
+  if (isSamePassword) {
     logger.warn(`New password is the same as current password for user: ${user._id}`)
     return next(createError("New password must be different from the current password", 400))
   }
